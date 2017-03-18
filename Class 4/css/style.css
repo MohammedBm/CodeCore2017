@@ -1,0 +1,56 @@
+h1 {
+    font-family: monospace;
+    color: teal;
+}
+
+.special {
+    font-size: 40px;
+    font-family: inherit;
+    color: gold;
+    background-color: purple;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+.strike {
+    text-decoration: line-through;
+}
+
+
+/*we are looking for ancestry, grand children , grand grand children*/
+
+ul li {}
+
+
+/* dicrect parent child relationship*/
+
+ul>li {
+    list-style: square;
+}
+
+
+/* CSS - classes are emant to be reused*/
+
+div.speical p {}
+
+.speical p {}
+
+.speical>p {}
+
+
+/*2*/
+
+.island {
+    color: red !important;
+    font-family: fantasy !important;
+}
+
+.speical>li {}
+
+ul.spical>li {}
+
+
+/**/
