@@ -17,7 +17,7 @@ let runThree = function() {
 runThree();
 
 //runThree is a higer order function because
-// i tales in a function as an argument
+// i takes in a function as an argument
 let sayGoodbye = function() {
     console.log("Good Bye");
 }
