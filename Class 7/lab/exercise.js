@@ -20,7 +20,7 @@ $('.small.blue.circle').length
 
 
 
-// Part 2
+// Part
 // When 'button 1' is clicked, remove all shapes.
 $('#button-1').click(function(){
 	$('.shape').remove();
@@ -66,13 +66,35 @@ $('#logo>a').attr('href','http://www.reddit.com')
 
 //ex 3
 // Go to http://en.wikipedia.org/wiki/Pug in your browser.
-//
+
 // Write some jQuery to change the title of the article to Your Name.
 $('#firstHeading').html("mhoammed");
 // Write some jQuery to hide the body of the article
 $('p').hide();
 // Write some jQuery to remove the wikipedia logo
 $('.mw-wiki-logo').hide();
+
+
+
+
+
+let str = "Taylor Jonathan Kayla Christopher Eva Jace Brianna Riley Ruby Xavier Laure Hudson Alice Adrian Violel Cole Kendal Brody Morgan Leo Caroline Jake Piper Bentley Brooke Sean Elise Jeremiah Alexa Asher Sienna Rees Nathaniel Micah Clara Jason Paige Kate Ryder Declan Hayden Nevaeh Sadie Brandon Quinn Easton Lincoln Isla Eleanor Harrison"
+
+newStr = str.split(',')
+conso
+
+Taylor,Jonathan,Kayla,Christopher,Eva,Jace,Brianna,Riley,Ruby,Xavier,Laure,Hudson,Alice,Adrian,Violel,Cole,Kendal,Brody,Morgan,Leo,Caroline,Jake,Piper,Bentley,Brooke,Sean,Elise,Jeremiah,Alexa,Asher,Sienna,Rees,Nathaniel,Micah,Clara,Jason,Paige,Kate,Ryder,Declan,Hayden,Nevaeh,Sadie,Brandon,Quinn,Easton,Lincoln,Isla,Eleanor,Harrison
+
+
+
+
+
+
+
+
+
+
+
 
 
 
