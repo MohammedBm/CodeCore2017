@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Todo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/6640b0dd2b.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDDfDxvn8RSkTVu7nP6IxIdV_qGYjbMhIY",
+            authDomain: "mytodo-7c27a.firebaseapp.com",
+            databaseURL: "https://mytodo-7c27a.firebaseio.com",
+            projectId: "mytodo-7c27a",
+            storageBucket: "mytodo-7c27a.appspot.com",
+            messagingSenderId: "553515077663"
+        };
+        firebase.initializeApp(config);
+
+
+
+        firebase.database().ref('Tasks').once('value').then(
+            function(data) {
+                console.log(data.val());
+                const pendingTasks = data.val()
+                for (let key in pendingTasks) {
+                    let toDo = pendingTasks[key];
+                    if (toDo !== undefined) {
+                        $('#pending').append(`
+                  <li>${toDo.Task}</li>
+                  <button class="btn btn-danger" type="submit">Mark Complete</button>
+                  <hr>
+                  `);
+                    }
+                }
+            }
+        )
+
+
+        $(document).ready(function() {
+            $('#post-form').submit(function(event) {
+                firebase.database().ref().child('Tasks').push({
+                    Task: $('#task').val(),
+                }, function(error) {
+                    if (error) {
+                        alert(`problem creating task ${error}`);
+                    } else {
+                        alert('Task created successfully');
+                    }
+                });
+                event.preventDefault();
+            })
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class='navbar navbar-default'>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand"> <i class="fa fa-check" aria-hidden="true"></i> ToDo</a>
+            </div>
+    </nav>
+
+
+
+    <!-- Body -->
+
+    <div class="container">
+
+        <form id="post-form">
+
+            <div class="row ">
+                <div class="col-md-6">
+
+
+                    <label for="text">Task Name</label>
+                    <input id="task" type="text" name="" value="">
+                    <button class="btn btn-danger" type="submit">Create Task</button>
+                </div>
+            </div>
+
+
+        </form>
+
+
+        <hr>
+        <h1>Pending Tasks</h1>
+        <div id="pending">
+            <hr>
+        </div>
+        <h1>Completed Tasks</h1>
+        <div id="completed"></div>
+        <hr>
+    </div>
+
+</body>
+
+</html>

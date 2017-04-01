@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>MyBlog</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        const config = {
+            apiKey: "AIzaSyDBFtobeKD4D8ODKdDmPwyf57RIdD6p07k",
+            authDomain: "myblog-b4c25.firebaseapp.com",
+            databaseURL: "https://myblog-b4c25.firebaseio.com",
+            projectId: "myblog-b4c25",
+            storageBucket: "myblog-b4c25.appspot.com",
+            messagingSenderId: "419112913626"
+        };
+        firebase.initializeApp(config);
+
+
+        $(document).ready(function() {
+            const id = window.location.hash.slice(1);
+            firebase.database().ref(`posts/${id}`).once('value').then(
+                function(data) {
+                  let post = data.val();
+                  $('#post-title').html(post.title);
+                  $('#post-body').html(post.body);
+
+
+                });
+
+        })
+    </script>
+
+</head>
+
+<body>
+
+
+    <h1 id="post-title"></h1>
+    <p id="post-body"></p>
+</body>
+
+</html>

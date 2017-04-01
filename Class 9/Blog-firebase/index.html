@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>MyBlog</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        const config = {
+            apiKey: "AIzaSyDBFtobeKD4D8ODKdDmPwyf57RIdD6p07k",
+            authDomain: "myblog-b4c25.firebaseapp.com",
+            databaseURL: "https://myblog-b4c25.firebaseio.com",
+            projectId: "myblog-b4c25",
+            storageBucket: "myblog-b4c25.appspot.com",
+            messagingSenderId: "419112913626"
+        };
+        firebase.initializeApp(config);
+
+        firebase.database().ref('posts').once('value').then(
+            function(data) {
+                console.log(data.val());
+                const posts = data.val();
+                for (let key in posts) {
+                    let post = posts[key];
+                    if (post !== undefined) {
+                        $('#posts').append(`
+                      <h3>
+                        <a href = 'show.html#${key}'>${post.title}</a>
+                      </h3>
+                      <hr/>
+                      `);
+                    }
+                }
+            }
+        )
+    </script>
+
+</head>
+
+<body>
+
+
+    <h1>Welcome to my blog</h1>
+    <div id="posts"></div>
+
+<footer>
+    <a href="admin.html">Sign In</a>
+</footer>
+</body>
+
+</html>
